@@ -15,11 +15,20 @@ class Home extends Component {
   };
 
   render() {
+    console.log(this.props);
+
     return (
       <div>
-        <p>Welcome to Pocket IMDb</p>
-        <h4>Movies</h4>
-        {this.renderMovies()}
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-12">
+              <h6 className="display-4">All movies</h6></div>
+            </div>
+
+          <div className="row">
+            {this.renderMovies()}
+          </div>
+        </div>
       </div>
     );
   }
