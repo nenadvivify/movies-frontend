@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import './MovieCard.style.scss';
+import './style.scss';
 
 const MovieCard = ({ movie }) => {
   return (
-    <div className="col-sm-6 col-lg-4 movie-card">
+    <div className="col-sm-6 movie-card">
 		<div className="card">
 		  <img src={movie.image_url} className="card-img-top" alt={movie.title} />
 

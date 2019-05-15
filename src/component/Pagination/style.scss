@@ -1,0 +1,37 @@
+.pagination-nav {
+	margin: 0 auto;
+	margin-top: 25px;
+}
+
+
+.rc-pagination {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.rc-pagination-item{
+  line-height: 1;
+  height: auto;
+  width: auto;
+  padding: .5rem .75rem;
+  color: #007bff;
+  float: none;
+}
+
+.rc-pagination-next:active,
+.rc-pagination-next:focus,
+.rc-pagination-prev:active,
+.rc-pagination-prev:focus,
+.rc-pagination-item:active,
+.rc-pagination-item:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.rc-pagination-item-active {
+  border: none;
+  box-shadow: none;
+  background-color: #007bff;
+  color: white;
+}

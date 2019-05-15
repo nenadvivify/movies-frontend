@@ -1,4 +1,4 @@
-import { LOGIN, AUTH_USER, REGISTER, LOGIN_ERROR, REGISTER_ERROR } from './ActionTypes';
+import { LOGIN, AUTH_USER, REGISTER, LOGIN_ERROR, REGISTER_ERROR } from 'store/types';
 
 export const logIn = logInData => {
   return {

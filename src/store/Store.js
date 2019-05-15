@@ -1,18 +1,15 @@
-import createSagaMiddleware from 'redux-saga';
 import { createStore, applyMiddleware } from 'redux';
 import { createBrowserHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 
 import rootReducer from './reducers';
-import rootSaga from './sagas';
-const sagaMiddleware = createSagaMiddleware();
+import reduxThunk from 'redux-thunk';
 
 const history = createBrowserHistory();
 const store = createStore(
   rootReducer(history),
-  applyMiddleware(routerMiddleware(history), sagaMiddleware)
+  applyMiddleware(routerMiddleware(history), reduxThunk)
 );
 
-sagaMiddleware.run(rootSaga);
 
 export default store;

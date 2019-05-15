@@ -9,6 +9,6 @@ export default history =>
   combineReducers({
     authUser: authReducer,
     error: errorReducer,
-    movie: movieReducer,
+    movies: movieReducer,
     router: connectRouter(history)
   });

@@ -1,4 +1,4 @@
-import { AUTH_USER } from '../actions/ActionTypes';
+import { AUTH_USER } from 'store/types';
 import AuthService from '../../services/AuthService';
 
 const authReducer = (state = AuthService.isAuthenticated(), action) => {

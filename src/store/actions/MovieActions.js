@@ -1,26 +1,32 @@
 import { 
 	GET_MOVIES, 
-	SET_MOVIES,
 	GET_MOVIE
-} from './ActionTypes';
+} from 'store/types';
+import axios from 'axios';
+import config from 'config';
 
-export const getMovies = payload => {
-  return {
-    type: GET_MOVIES,
-    payload
-  };
-};
+const MOVIES_URL = config.API_BASE_URL + '/api/movies';
 
-export const setMovies = payload => {
-  return {
-    type: SET_MOVIES,
-    payload
-  };
-};
+export const getMovies = () => {
+	return async dispatch => {
+		try {
+			const res = await axios.get(MOVIES_URL);
+			dispatch({type: GET_MOVIES, payload: res.data})
+			return res.data;
+		} catch(error) {
+			throw new Error(error.response.data.message)
+		}
+	}
+}
 
-export const getMovie = payload => {
-	return {
-		type: GET_MOVIE,
-		payload
+export const getMovie = id => {
+	return async dispatch => {
+		try {
+			const res = await axios.get(`${MOVIES_URL}/${id}`);
+			dispatch({type: GET_MOVIE, payload: res.data});
+			return res.data;
+		} catch(error) {
+			throw new Error(error.response.data.message)
+		}
 	}
 }

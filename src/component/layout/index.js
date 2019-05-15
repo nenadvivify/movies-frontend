@@ -7,8 +7,10 @@ import { authUser } from 'store/actions/AuthActions';
 import Login from 'containers/auth/Login';
 import Register from 'containers/auth/Register';
 import Home from 'containers/Home';
-import Navbar from 'component/navbar';
-import Movie from 'component/movie';
+import Navbar from 'component/Navbar';
+import Footer from 'component/Footer';
+import Movie from 'containers/Movie';
+import NotFound from 'component/NotFound';
 import './index.scss';
 
 class AppLayout extends React.Component {
@@ -40,12 +42,15 @@ class AppLayout extends React.Component {
 
       <main>
         <Switch>
-          <Route exact path="/home" component={Home} />
+          <Route exact path="/home/:page?" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/movies/:movieId" component={Movie} />
+          <Route exact path='*' component={NotFound} />
         </Switch>
       </main>
+
+      <Footer />
     </div>
   }
 }
