@@ -8,6 +8,10 @@ import config from 'config';
 
 const MOVIES_URL = config.API_BASE_URL + '/api/movies';
 
+export const searchMovie = searchText => {
+	return {type: SEARCH_MOVIE, payload: searchText}
+}
+
 export const getMovies = () => {
 	return async dispatch => {
 		try {
@@ -15,7 +19,7 @@ export const getMovies = () => {
 			dispatch({type: GET_MOVIES, payload: res.data})
 			return res.data;
 		} catch(error) {
-			throw new Error(error.response.data.message)
+			console.log("Request to server failed.")
 		}
 	}
 }
@@ -27,12 +31,7 @@ export const getMovie = id => {
 			dispatch({type: GET_MOVIE, payload: res.data});
 			return res.data;
 		} catch(error) {
-			throw new Error(error.response.data.message)
+			console.log("Request to server failed.")
 		}
 	}
-}
-
-
-export const searchMovie = searchText => {
-	return {type: SEARCH_MOVIE, payload: searchText}
 }

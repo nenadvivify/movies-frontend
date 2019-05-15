@@ -5,6 +5,7 @@ import authReducer from './AuthReducer';
 import errorReducer from './ErrorReducer';
 import movieReducer from './MovieReducer';
 import searchReducer from './SearchReducer';
+import filtersReducer from './FiltersReducer';
 
 export default history =>
   combineReducers({
@@ -12,5 +13,6 @@ export default history =>
     authUser: authReducer,
     error: errorReducer,
     movies: movieReducer,
-    searchText: searchReducer
+    searchText: searchReducer,
+    filters: filtersReducer
   });

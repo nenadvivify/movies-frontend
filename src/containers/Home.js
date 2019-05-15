@@ -5,6 +5,7 @@ import { getMovies, searchMovie } from 'store/actions/MovieActions';
 import MovieCard from 'component/MovieCard';
 import Pagination from 'component/Pagination';
 import Search from 'component/Search';
+import Filters from 'component/Filters';
 
 class Home extends Component {
   componentDidMount() {
@@ -34,7 +35,7 @@ class Home extends Component {
       <div className="home">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 home-left">
+            <div className="col-md-8 col-lg-10 home-left">
               <div className="row">
                 <Search 
                 history={this.props.history}
@@ -54,8 +55,8 @@ class Home extends Component {
               </div>
             </div>
 
-            <div className="home-right">
-              Sidebar
+            <div className="col-md-4 col-lg-2 home-right">
+              <Filters />
             </div>
           </div>
         </div>
