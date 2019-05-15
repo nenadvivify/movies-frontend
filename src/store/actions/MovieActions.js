@@ -1,6 +1,7 @@
 import { 
 	GET_MOVIES, 
-	GET_MOVIE
+	GET_MOVIE,
+	SEARCH_MOVIE
 } from 'store/types';
 import axios from 'axios';
 import config from 'config';
@@ -29,4 +30,9 @@ export const getMovie = id => {
 			throw new Error(error.response.data.message)
 		}
 	}
+}
+
+
+export const searchMovie = searchText => {
+	return {type: SEARCH_MOVIE, payload: searchText}
 }
