@@ -5,6 +5,10 @@ import Back from 'component/back';
 import './style.scss';
 
 class Movie extends Component {
+	componentDidMount = () => {
+		window.scrollTo(0, 0);
+	}
+
     render() {
     	const {loading, movie} = this.props;
 		
@@ -18,12 +22,14 @@ class Movie extends Component {
 
 
 		return (
-			<div className="container">
+			<div className="container movie-single">
 				<div className="row">
 					<div className="col-md-8 main-content">
 					{
 						!movie ? (
-								<div>Movie not found</div>
+								<div className="not-found">
+									<h1 className="display-4">Movie not found</h1>
+								</div>
 							) : (
 								<>
 								<div className="movie">

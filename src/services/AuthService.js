@@ -35,6 +35,12 @@ class AuthService extends ApiService {
   createSession = user => {
     localStorage.setItem('user', JSON.stringify(user));
     this.setAuthorizationHeader();
+
+    console.log(user)
+
+    setTimeout(() => {
+      this.destroySession()
+    }, user.expires_in * 1000)
   };
 
   destroySession = () => {
@@ -55,8 +61,8 @@ class AuthService extends ApiService {
   };
 
   logout = async () => {
-    const { data } = await this.apiClient.post(ENDPOINTS.LOGOUT);
     this.destroySession();
+    const { data } = await this.apiClient.post(ENDPOINTS.LOGOUT);
     return { ok: true, data };
   };
 

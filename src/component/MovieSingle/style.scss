@@ -5,6 +5,14 @@
 	justify-content: center;
 }
 
+.movie-single {
+	.not-found {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
 .movie {
 	padding: 2rem;
 
