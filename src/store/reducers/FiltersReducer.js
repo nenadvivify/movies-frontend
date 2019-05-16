@@ -15,7 +15,7 @@ const filtersReducer = (state = initialState, action) => {
 	case TOGGLE_FILTER:
 		let active = state.active;
 		let found = state.active.includes(action.payload.name);
-		if(found) active = active.filter(e => e != action.payload.name);
+		if(found) active = active.filter(e => e !== action.payload.name);
 		else active = active.concat(action.payload.name);
 
 		return {...state, active}

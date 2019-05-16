@@ -35,12 +35,7 @@ class Home extends Component {
       <div className="home">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 col-lg-10 home-left">
-              <div className="row">
-                <Search 
-                history={this.props.history}
-                searchMovie={this.props.searchMovie} />
-              </div>
+            <div className="col-md-8 col-lg-8 home-left">
 
               <div className="row">
                 {this.renderMovies()}
@@ -55,7 +50,11 @@ class Home extends Component {
               </div>
             </div>
 
-            <div className="col-md-4 col-lg-2 home-right">
+            <div className="col-md-4 col-lg-4 home-right">
+              <Search 
+              history={this.props.history}
+              searchMovie={this.props.searchMovie} />
+
               <Filters />
             </div>
           </div>

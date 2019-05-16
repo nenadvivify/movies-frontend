@@ -17,17 +17,19 @@ class Filters extends Component {
       const checked = this.props.active.includes(filter.name);
 
       return (
-        <div key={filter.id} className="custom-control custom-checkbox">
-          <input 
-          type="checkbox" 
-          checked={checked} 
-          className="custom-control-input" 
-          onChange={() => this.handleChange(filter)}
-          id={`filter-${filter.id}`} />
+        <div key={filter.id} className="list-group-item filters-item">
+          <div className="custom-control custom-checkbox">
+            <input 
+            type="checkbox" 
+            checked={checked} 
+            className="custom-control-input" 
+            onChange={() => this.handleChange(filter)}
+            id={`filter-${filter.id}`} />
 
-          <label className="custom-control-label" htmlFor={`filter-${filter.id}`}>
-            <span>{this.capitalize(filter.name)}</span>
-          </label>
+            <label className="custom-control-label filters-label" htmlFor={`filter-${filter.id}`}>
+              <span>{this.capitalize(filter.name)}</span>
+            </label>
+          </div>
         </div>
       )
     })
@@ -39,9 +41,9 @@ class Filters extends Component {
 
   render() {
   	return (
-  		<div className="filters">
-  			<h1 className="display-4">Filters</h1>
-        {this.showFilters()}
+  		<div className="filters card">
+  			<div className="card-header">Filters</div>
+        <div className="card-body filters-body">{this.showFilters()}</div>
   		</div>
   	);
   }

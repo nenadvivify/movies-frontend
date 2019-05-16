@@ -18,14 +18,12 @@ const Search = ({ searchMovie, history }) => {
 	}
 
     return (
-        <div className="col-md-8 col-lg-6 mx-auto">
-	        <div className="form-group search-field">
-	        	<input 
-	        	type="text" 
-	        	className="form-control search-input" 
-	        	placeholder="Search movie..."
-	        	onChange={debounceEventHandler(handleChange, 750)} />
-	        </div>
+        <div className="form-group search-field">
+        	<input 
+        	type="text" 
+        	className="form-control search-input" 
+        	placeholder="Search movie..."
+        	onChange={debounceEventHandler(handleChange, 750)} />
         </div>
     );
 };

@@ -1,4 +1,27 @@
 .filters {
+	&-body {
+		padding: 0!important;
+	}
+
+	&-item {
+		border: none !important;
+		margin-bottom: 0px !important;
+		transition: all 0.25s ease-in;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+
+		&:last-child {
+			border-bottom: none !important;
+		}
+
+		&:hover {
+			background: #EAF4FD;
+		}
+	}
+
+	&-label {
+		padding-left: 15px;
+	}
+
 	h1 {
 		font-size: 2rem;
 		font-weight: 300;
