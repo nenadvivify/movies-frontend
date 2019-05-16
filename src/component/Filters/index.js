@@ -38,8 +38,6 @@ class Filters extends Component {
   }
 
   render() {
-  	console.log(this.props);
-
   	return (
   		<div className="filters">
   			<h1 className="display-4">Filters</h1>

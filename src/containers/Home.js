@@ -84,13 +84,21 @@ function applySearchText(movies, searchText) {
   })
 }
 
+function applyFilters(movies, filters) {
+  if(!filters.length) return movies;
+  return movies.filter(movie => {
+    return filters.includes(movie.genre.name)
+  })
+}
+
 const mapStateToProps = (state, props) => {
   const searchText = state.searchText;
   const afterSearch = applySearchText(state.movies, searchText);
-  const afterSlice = slicePerPage(afterSearch, props, 10)
+  const afterFilters = applyFilters(afterSearch, state.filters.active);
+  const afterSlice = slicePerPage(afterFilters, props, 10)
 
   return {
-    total: afterSearch.length,
+    total: afterFilters.length,
     movies: afterSlice
   }
 };
