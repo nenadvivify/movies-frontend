@@ -28,6 +28,7 @@ class HttpService {
         this.unauthorizedCallback();
         break;
       }
+      
       default:
         break;
     }

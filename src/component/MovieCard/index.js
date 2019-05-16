@@ -18,7 +18,7 @@ const MovieCard = ({ movie }) => {
 		    	<span>{movie.genre.name}</span>
 		    </div>
 
-		    <p className="card-text">{movie.description.slice(0, 300)}</p>
+		    <p className="card-text">{movie.description.slice(0, 250) + '...'}</p>
 		  </div>
 		</div>
     </div>

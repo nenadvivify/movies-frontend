@@ -3,7 +3,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import {ToastContainer} from 'react-toastify';
-import AppLayout from './component/layout';
+import AppLayout from './component/Layout';
 import store from './store/Store';
 import './App.css';
 

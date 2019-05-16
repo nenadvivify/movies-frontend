@@ -29,7 +29,7 @@ class Register extends Component {
       this.props.history.push('/login');
       toast.success(`Registration successful. Please login.`);
     }).catch(err => {
-      console.log(err)
+      toast.error(err.message);
     })
   };
 
