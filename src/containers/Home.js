@@ -32,7 +32,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="home">
+      <div style={{padding: '2rem 0' }} className="home">
         <div className="container">
           <div className="row">
             <div className="col-md-8 col-lg-8 home-left">
