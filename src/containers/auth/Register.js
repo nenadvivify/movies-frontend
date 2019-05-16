@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { register } from 'store/actions/AuthActions';
+import {toast} from 'react-toastify';
 import './style.scss';
 
 class Register extends Component {
@@ -23,7 +24,13 @@ class Register extends Component {
       password_confirmation: this.state.password_confirmation,
       name: this.state.name
     };
-    this.props.register(registerData);
+
+    this.props.register(registerData).then(res => {
+      this.props.history.push('/login');
+      toast.success(`Registration successful. Please login.`);
+    }).catch(err => {
+      console.log(err)
+    })
   };
 
   render() {

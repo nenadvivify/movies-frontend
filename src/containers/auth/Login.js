@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { logIn } from '../../store/actions/AuthActions';
+import {toast} from 'react-toastify';
 import './style.scss';
 
 class Login extends Component {
@@ -19,7 +20,13 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password
     };
-    this.props.logIn(logInData);
+
+    this.props.logIn(logInData).then(res => {
+      this.props.history.push('/home');
+      toast.success(`You've successfully logged in.`);
+    }).catch(err => {
+      toast.error(err.message);
+    })
   };
 
   render() {

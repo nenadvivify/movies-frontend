@@ -5,6 +5,7 @@ const authReducer = (state = AuthService.isAuthenticated(), action) => {
   switch (action.type) {
     case AUTH_USER:
       return action.payload;
+      
     default:
       return state;
   }
