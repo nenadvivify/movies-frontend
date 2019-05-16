@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { logIn } from '../../store/actions/AuthActions';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 import './style.scss';
 
 class Login extends Component {
@@ -22,12 +22,17 @@ class Login extends Component {
     };
 
     this.props.logIn(logInData).then(res => {
-      this.props.history.push('/home');
-      toast.success(`You've successfully logged in.`);
+      window.location.replace("/home");
     }).catch(err => {
       toast.error(err.message);
     })
   };
+
+  componentWillMount = () => {
+    if(this.props.user) {
+      this.props.history.push('/home');
+    }
+  }
 
   render() {
     return (
@@ -68,6 +73,7 @@ class Login extends Component {
 
 const mapStateToProps = state => {
   return {
+    user: state.authUser,
     loginError: state.error.loginError
   };
 };

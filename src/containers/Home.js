@@ -13,7 +13,8 @@ class Home extends Component {
   }
 
   handlePageChange = page => {
-    this.props.history.push(`/home/${page}`)
+    this.props.history.push(`/home/${page}`);
+    window.scrollTo(0, 0);
   }
 
   renderMovies = () => {

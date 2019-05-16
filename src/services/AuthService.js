@@ -3,7 +3,7 @@ import ApiService from './ApiService';
 const ENDPOINTS = {
   LOGIN: '/api/auth/login',
   REGISTER: '/api/auth/register',
-  LOGOUT: '/logout'
+  LOGOUT: '/api/auth/logout'
 };
 
 class AuthService extends ApiService {
@@ -27,7 +27,7 @@ class AuthService extends ApiService {
     const token = this.getToken();
     if (token) {
       this.api.attachHeaders({
-        Authorization: `Bearer ${token.access_token}`
+        Authorization: `Bearer ${token}`
       });
     }
   };

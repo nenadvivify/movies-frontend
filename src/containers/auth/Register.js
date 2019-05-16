@@ -33,6 +33,12 @@ class Register extends Component {
     })
   };
 
+  componentWillMount = () => {
+    if(this.props.user) {
+      this.props.history.push('/home');
+    }
+  }
+
   render() {
     return (
       <div className="auth-page container">
@@ -92,6 +98,7 @@ class Register extends Component {
 
 const mapStateToProps = state => {
   return {
+    user: state.authUser,
     registerError: state.error.registerError
   };
 };

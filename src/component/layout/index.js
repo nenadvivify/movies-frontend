@@ -14,31 +14,29 @@ import NotFound from 'component/NotFound';
 import './index.scss';
 
 class AppLayout extends React.Component {
-  state = {
-    loading: true
+  componentDidMount() {
+    if (this.props.user) {
+      this.props.history.push('/home');
+    } else {
+      if(!['/login', '/register'].includes(this.props.location.pathname)) {
+        this.props.history.push('/login');
+      }
+    }
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.user !== prevProps.user) {
-  //     if (this.props.user) {
-  //       this.props.history.push('/home');
-  //     } else {
-  //       this.props.history.push('/login');
-  //     }
-  //   }
-  // }
-
-  // componentDidMount() {
-  //   if (this.props.user) {
-  //     this.props.history.push('/home');
-  //   } else {
-  //     this.props.history.push('/login');
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (this.props.user !== prevProps.user) {
+      if (this.props.user) {
+        this.props.history.push('/home');
+      } else {
+        this.props.history.push('/login');
+      }
+    }
+  }
 
   render() {
     return <div>
-      <Navbar />
+      <Navbar user={this.props.user} />
 
       <main>
         <Switch>
