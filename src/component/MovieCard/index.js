@@ -3,23 +3,42 @@ import {Link} from 'react-router-dom';
 import './style.scss';
 
 const MovieCard = ({ movie }) => {
+	const to = '/movies/' + movie.id; 
+
+	const excerpt = (string, len) => {
+		return string.slice(0, len) + '...'
+	}
+
   return (
-    <div className="col-lg-6 movie-card">
+    <div className="col-xl-6 movie-card">
 		<div className="card">
-		  <img src={movie.image_url} className="card-img-top" alt={movie.title} />
+			<Link to={to}>
+				<img 
+				src={movie.image_url} 
+				className="card-img-top" 
+				alt={movie.title} />
+			</Link>
 
-		  <div className="card-body">
-		    <h5 className="card-title">
-				<Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-		    </h5>
+		    <div className="card-body">
+			    <h5 className="card-title">
+					<Link to={to}>{movie.title}</Link>
+			    </h5>
 
-		    <div>
-		    	<strong>Genre: </strong>
-		    	<span>{movie.genre.name}</span>
+			    <p className="card-text">
+					{excerpt(movie.description, 150)}
+			    </p>
+			    
+			    <div className="card-genre">
+			    	<strong>Genre: </strong>
+			    	<span>{movie.genre.name}</span>
+			    </div>
+
+			    <div className="card-visits">
+			    	<strong>Visits: </strong>
+			    	<span>{movie.visits}</span>
+			    </div>
+
 		    </div>
-
-		    <p className="card-text">{movie.description.slice(0, 250) + '...'}</p>
-		  </div>
 		</div>
     </div>
   );

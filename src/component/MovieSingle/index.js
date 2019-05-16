@@ -29,14 +29,23 @@ class Movie extends Component {
 								<div className="movie">
 									<Back history={this.props.history}>back</Back>
 									<h4 className="movie-title">{movie.title}</h4>
-
-									<div className="movie-genre">
-										<strong>Genre: </strong>
-										<i>{movie.genre && movie.genre.name}</i>
-									</div>
-
 									<img className="img-fluid movie-image" src={movie.image_url} alt=""/>
-									<p className="movie-description">{movie.description}</p>
+									
+									<div className="movie-body">
+										<div className="movie-info">
+											<div className="movie-stat">
+												<strong>Genre: </strong>
+												<i>{movie.genre && movie.genre.name}</i>
+											</div>
+
+											<div className="movie-stat">
+												<strong>Visits: </strong>
+												<i>{movie.visits}</i>
+											</div>
+										</div>
+
+										<p className="movie-description">{movie.description}</p>
+									</div>
 								</div>
 								</>
 							)

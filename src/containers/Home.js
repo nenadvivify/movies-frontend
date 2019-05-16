@@ -34,9 +34,9 @@ class Home extends Component {
   render() {
     return (
       <div style={{padding: '2rem 0' }} className="home">
-        <div className="container">
+        <div className="container fluid-md">
           <div className="row">
-            <div className="col-lg-8 order-2 order-lg-1 home-left">
+            <div className="col-md-8 order-2 order-md-1 home-left">
 
               <div className="row">
                 {this.renderMovies()}
@@ -51,7 +51,7 @@ class Home extends Component {
               </div>
             </div>
 
-            <div className="col-lg-4 order-1 order-lg-2 home-right">
+            <div className="col-md-4 order-1 order-md-2 home-right">
               <Search 
               history={this.props.history}
               searchMovie={this.props.searchMovie} />

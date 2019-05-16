@@ -7,20 +7,30 @@
 
 .movie {
 	padding: 2rem;
+
+	&-info {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&-body {
+		padding: 1.2rem;
+	}
 	
 	&-title {
 		text-transform: capitalize;
+		font-weight: 100;
 		font-size: 2.4rem;
+		margin: 15px 0;
 	}
 
 	&-description {
 		font-size: 1.2rem;
 		margin-top: 10px;
-		padding: 1rem;
 		font-weight: 300;
 	}
 
-	&-genre {
+	&-stat {
 		margin-bottom: 10px;
 	}
 }

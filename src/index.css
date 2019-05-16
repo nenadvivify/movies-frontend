@@ -32,3 +32,9 @@ code {
 .Toastify__toast--error {
   background-color: #E14A3B;
 }
+
+@media(min-width: 768px) and (max-width: 992px) {
+  .fluid-md {
+    max-width: 100%;
+  }
+}
