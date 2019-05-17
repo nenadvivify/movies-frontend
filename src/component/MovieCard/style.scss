@@ -12,7 +12,37 @@
 	}
 
 	&-title {
+		display: flex;
 		text-transform: capitalize;
+		justify-content: space-between;
+		align-items: center;
+
+		.votes {
+			display: flex;
+			align-items: center;
+
+			.likes {
+				i {
+					color: #2AC66D;
+				}
+			}
+
+			.dislikes {
+				i {
+					color: #E14A3B;
+				}
+			}
+		
+			&-el {
+				margin-left: 15px;
+				font-size: 14px;
+			}
+
+			&-el-value {
+				color: #777;
+				margin-left: 10px;
+			}
+		}
 
 		a {
 			color: black;
@@ -24,5 +54,13 @@
 		font-size: 13px;
 		margin-top: 10px;
 
+	}
+
+	.info-stat {
+		font-size: 14px;
+
+		span {
+			color: #777;
+		}
 	}
 }

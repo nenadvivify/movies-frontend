@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import MovieStats from 'component/MovieStats';
 import Back from 'component/back';
 import './style.scss';
 
@@ -10,21 +11,20 @@ class Movie extends Component {
 	}
 
     render() {
-    	const {loading, movie} = this.props;
+    	const {movie} = this.props;
 		
-		if(loading) {
-			return <div className="container center">
-				<div className="spinner-border" role="status">
-				  <span className="sr-only">Loading...</span>
-				</div>
-			</div>
-		}
-
+		// if(loading) {
+		// 	return <div className="container center">
+		// 		<div className="spinner-border" role="status">
+		// 		  <span className="sr-only">Loading...</span>
+		// 		</div>
+		// 	</div>
+		// }
 
 		return (
 			<div className="container movie-single">
 				<div className="row">
-					<div className="col-md-8 main-content">
+					<div className="col-lg-8 main-content">
 					{
 						!movie ? (
 								<div className="not-found">
@@ -39,15 +39,12 @@ class Movie extends Component {
 									
 									<div className="movie-body">
 										<div className="movie-info">
-											<div className="movie-stat">
+											<div className="movie-info-field">
 												<strong>Genre: </strong>
-												<i>{movie.genre && movie.genre.name}</i>
+												<span className="text-value">{movie.genre && movie.genre.name}</span>
 											</div>
 
-											<div className="movie-stat">
-												<strong>Visits: </strong>
-												<i>{movie.visits}</i>
-											</div>
+											<MovieStats movie={movie} />
 										</div>
 
 										<p className="movie-description">{movie.description}</p>
@@ -58,7 +55,7 @@ class Movie extends Component {
 						}
 						</div>
 
-						<div className="col-md-4 sidebar">Sidebar</div>
+						<div className="col-lg-4 sidebar">Sidebar</div>
 					</div>
 				</div>
 			);
@@ -66,7 +63,7 @@ class Movie extends Component {
 }
 
 Movie.propTypes = {
-	loading: PropTypes.bool.isRequired,
+	// loading: PropTypes.bool.isRequired,
 	movie: PropTypes.oneOfType([
 		PropTypes.oneOf([null, undefined]).isRequired,
 		PropTypes.object.isRequired

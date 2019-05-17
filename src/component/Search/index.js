@@ -1,31 +1,35 @@
 import React from 'react';
-import _ from 'lodash';
+import {debounce} from 'lodash';
+import { withRouter } from 'react-router-dom';
 import './style.scss';
 
-const Search = ({ searchMovie, history }) => {
-	const handleChange = (event) => {
-		searchMovie(event.target.value);
-		history.push('/home/1');
+class Search extends React.Component {
+	handleChange = event => {
+		const value = event.target.value;
+		this.props.searchMovie(value);
 	}
 
-	function debounceEventHandler(...args) {
-	  const debounced = _.debounce(...args)
+	debouncedHandleChange = (...args) => {
+	    const debounced = debounce(...args)
 
-	  return function(e) {
-	    e.persist()
-	    return debounced(e)
-	  }
+		return function(e) {
+		  e.persist()
+		  return debounced(e)
+		}
 	}
 
-    return (
-        <div className="form-group search-field">
-        	<input 
-        	type="text" 
-        	className="form-control search-input" 
-        	placeholder="Search movie..."
-        	onChange={debounceEventHandler(handleChange, 750)} />
-        </div>
-    );
-};
+	render = () => {
+		return (
+	        <div className="form-group search-field">
+	        	<input 
+	        	type="text" 
+	        	defaultValue={this.props.searchText || ""}
+	        	className="form-control search-input" 
+	        	placeholder="Search movie..."
+	        	onChange={this.debouncedHandleChange(this.handleChange, 750)} />
+	        </div>
+	    );
+	}
+}
 
-export default Search;
+export default withRouter(Search);

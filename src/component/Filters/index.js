@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFilters, toggleFilter } from 'store/actions/FilterActions';
+import { withRouter } from 'react-router-dom';
 import './style.scss';
 
 class Filters extends Component {
@@ -10,6 +11,9 @@ class Filters extends Component {
 
   handleChange = filter => {
     this.props.toggleFilter(filter);
+    if(this.props.match.params.page > 1) {
+      this.props.history.push('/home/1')
+    }
   }
 
   showFilters = () => {
@@ -62,7 +66,9 @@ const mapDispatchToProps = {
   toggleFilter
 };
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(Filters)
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Filters)
+)

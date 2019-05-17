@@ -16,9 +16,14 @@
 .movie {
 	padding: 2rem;
 
+	&-image {
+		width: 100%;
+	}
+
 	&-info {
 		display: flex;
-		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
 	}
 
 	&-body {
@@ -38,7 +43,15 @@
 		font-weight: 300;
 	}
 
-	&-stat {
+	&-info-field {
 		margin-bottom: 10px;
+		display: flex;
+		align-items: center;
+
+		.text-value {
+			color: #777;
+			margin-left: 10px;
+			font-style: italic;
+		}
 	}
 }

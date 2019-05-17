@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import MovieStats from 'component/MovieStats';
 import './style.scss';
 
 const MovieCard = ({ movie }) => {
@@ -22,22 +23,17 @@ const MovieCard = ({ movie }) => {
 		    <div className="card-body">
 			    <h5 className="card-title">
 					<Link to={to}>{movie.title}</Link>
+					<MovieStats movie={movie} />
 			    </h5>
 
 			    <p className="card-text">
 					{excerpt(movie.description, 150)}
 			    </p>
 			    
-			    <div className="card-genre">
+			    <div className="card-genre info-stat">
 			    	<strong>Genre: </strong>
-			    	<span>{movie.genre.name}</span>
+			    	<span>{movie.genre && movie.genre.name}</span>
 			    </div>
-
-			    <div className="card-visits">
-			    	<strong>Visits: </strong>
-			    	<span>{movie.visits}</span>
-			    </div>
-
 		    </div>
 		</div>
     </div>

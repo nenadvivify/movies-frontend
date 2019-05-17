@@ -1,0 +1,40 @@
+.movie-stats {
+	display: flex;
+	align-items: center;
+	
+	.vote-button {
+		transition: all 0.25s ease-in;
+		cursor: pointer;
+		opacity: 0.7;
+
+		&:hover {
+			opacity: 1;
+			transform: scale(1.2);
+		}
+	}
+
+	.icon-field {
+		font-size: 14px;
+
+		&:not(:first-child) {
+			margin-left: 20px;
+		}
+
+		i {
+			font-size: 16px;
+
+			&.likes-icon {
+				color: #2AC66D;
+			}
+
+			&.dislikes-icon {
+				color: #E14A3B;
+			}
+		}
+
+		span {
+			margin-left: 5px;
+			color: #777;
+		}
+	}
+}

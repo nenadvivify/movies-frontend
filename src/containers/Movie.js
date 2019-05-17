@@ -5,28 +5,25 @@ import { getMovie } from 'store/actions/MovieActions';
 import Movie from 'component/MovieSingle';
 
 class Home extends Component {
-  state = {
-    movie: null,
-    loading: true
-  }
-
   componentDidMount() {
-    const id = this.props.match.params.movieId;
-    this.props.getMovie(id).then(res => {
-      this.setState({movie: res, loading: false})
-    }).catch(err => {
-      console.log(err);
-      this.setState({loading: false})
-    })
+    const movieId = this.props.match.params.movieId;
+    this.props.getMovie(movieId)
   }
 
   render() {
+    if(!this.props.movie) {
+      return null;
+    }
     
     return (
-      <Movie 
-      loading={this.state.loading} 
-      movie={this.state.movie} />
+      <Movie movie={this.props.movie} />
     );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    movie: state.movies.active
   }
 }
 
@@ -36,7 +33,7 @@ const mapDispatchToProps = {
 
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(Home)
 );

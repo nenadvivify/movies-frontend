@@ -1,7 +1,8 @@
 import { 
 	GET_MOVIES, 
 	GET_MOVIE,
-	SEARCH_MOVIE
+	SEARCH_MOVIE,
+	VOTE_MOVIE
 } from 'store/types';
 import axios from 'axios';
 import config from 'config';
@@ -19,7 +20,7 @@ export const getMovies = () => {
 			dispatch({type: GET_MOVIES, payload: res.data})
 			return res.data;
 		} catch(error) {
-			console.log("Request to server failed.")
+			console.log("Get all movies action failed.")
 		}
 	}
 }
@@ -31,7 +32,18 @@ export const getMovie = id => {
 			dispatch({type: GET_MOVIE, payload: res.data});
 			return res.data;
 		} catch(error) {
-			console.log("Request to server failed.")
+			console.log("Get movie action failed.")
+		}
+	}
+}
+
+export const voteMovie = data => {
+	return async dispatch => {
+		try {
+			const res = await axios.post(`${MOVIES_URL}/vote`, data);
+			dispatch({type: VOTE_MOVIE, payload: res.data});
+		} catch(error) {
+			console.log("Vote action failed.")
 		}
 	}
 }

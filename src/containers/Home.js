@@ -53,7 +53,7 @@ class Home extends Component {
 
             <div className="col-md-4 order-1 order-md-2 home-right">
               <Search 
-              history={this.props.history}
+              searchText={this.props.searchText}
               searchMovie={this.props.searchMovie} />
 
               <Filters />
@@ -92,12 +92,13 @@ function applyFilters(movies, filters) {
 }
 
 const mapStateToProps = (state, props) => {
-  const searchText = state.searchText;
-  const afterSearch = applySearchText(state.movies, searchText);
+  const {searchText, movies} = state;
+  const afterSearch = applySearchText(movies.all, searchText);
   const afterFilters = applyFilters(afterSearch, state.filters.active);
   const afterSlice = slicePerPage(afterFilters, props, 10)
-
+  
   return {
+    searchText,
     total: afterFilters.length,
     movies: afterSlice
   }

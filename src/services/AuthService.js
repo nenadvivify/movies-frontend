@@ -16,9 +16,16 @@ class AuthService extends ApiService {
     const token = this.getToken();
     const user = this.getUser();
 
-    if (token && user) {
-      this.setAuthorizationHeader();
 
+
+    if (token && user) {
+      const isExpired = Date.now() > Date(user.expireDate);
+
+      if(isExpired) {
+        this.destroySession();
+      }
+
+      this.setAuthorizationHeader();
       this.api.setUnauthorizedCallback(this.destroySession.bind(this));
     }
   };
@@ -33,14 +40,11 @@ class AuthService extends ApiService {
   };
 
   createSession = user => {
-    localStorage.setItem('user', JSON.stringify(user));
+    let expireDate = Date.now() + user.expires_in;
+    let data = {...user, expireDate};
+
+    localStorage.setItem('user', JSON.stringify(data));
     this.setAuthorizationHeader();
-
-    console.log(user)
-
-    setTimeout(() => {
-      this.destroySession()
-    }, user.expires_in * 1000)
   };
 
   destroySession = () => {
@@ -56,13 +60,12 @@ class AuthService extends ApiService {
 
   signup = async signupData => {
     const { data } = await this.apiClient.post(ENDPOINTS.REGISTER, signupData);
-
     return data;
   };
 
   logout = async () => {
-    this.destroySession();
     const { data } = await this.apiClient.post(ENDPOINTS.LOGOUT);
+    this.destroySession();
     return { ok: true, data };
   };
 
