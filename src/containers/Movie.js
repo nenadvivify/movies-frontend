@@ -16,14 +16,28 @@ class Home extends Component {
     }
     
     return (
-      <Movie movie={this.props.movie} />
+      <Movie 
+      similar={this.props.similar}
+      movie={this.props.movie} />
     );
   }
 }
 
+const getSimilar = (movies, active, len) => {
+  if(!movies || !active) return [];
+
+  return movies.filter(movie => {
+    return movie.genre.name === active.genre.name
+  }).slice(0, len);
+}
+
 const mapStateToProps = state => {
+  const {active, all} = state.movies;
+  const similar = getSimilar(all, active, 10);
+
   return {
-    movie: state.movies.active
+    movie: active,
+    similar
   }
 }
 

@@ -6,6 +6,8 @@
 }
 
 .movie-single {
+	padding: 2rem 0;
+
 	.not-found {
 		display: flex;
 		align-items: center;
@@ -14,10 +16,14 @@
 }
 
 .movie {
-	padding: 2rem;
-
 	&-image {
 		width: 100%;
+	}
+
+	&-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 	}
 
 	&-info {
@@ -35,6 +41,7 @@
 		font-weight: 100;
 		font-size: 2.4rem;
 		margin: 15px 0;
+		margin-top: 0;
 	}
 
 	&-description {

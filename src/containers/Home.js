@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getMovies, searchMovie } from 'store/actions/MovieActions';
+
 import MovieCard from 'component/MovieCard';
 import Pagination from 'component/Pagination';
 import Search from 'component/Search';
 import Filters from 'component/Filters';
+import MoviesWidget from 'component/MoviesWidget';
 
 class Home extends Component {
   componentDidMount() {
@@ -15,6 +17,12 @@ class Home extends Component {
   handlePageChange = page => {
     this.props.history.push(`/home/${page}`);
     window.scrollTo(0, 0);
+  }
+
+  getTopMovies = (len) => {
+    const movies = [...this.props.movies];
+    movies.sort((a, b) => b.likes - a.likes);
+    return movies.slice(0, len);
   }
 
   renderMovies = () => {
@@ -57,6 +65,11 @@ class Home extends Component {
               searchMovie={this.props.searchMovie} />
 
               <Filters />
+
+              <MoviesWidget 
+              title="Most popular movies"
+              movies={this.getTopMovies(10)}
+              withLikes withBadge />
             </div>
           </div>
         </div>
