@@ -46,7 +46,7 @@ class Navbar extends Component {
   render() {
     return (
     	<nav className="navbar navbar-expand-md navbar-light bg-light fixed-top">
-      	<Link className="navbar-brand" to="/">Pocket IMDb</Link>
+      	<Link className="navbar-brand" to="/home">Pocket IMDb</Link>
 
       	<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       	<span className="navbar-toggler-icon"></span>

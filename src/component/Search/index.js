@@ -6,7 +6,10 @@ import './style.scss';
 class Search extends React.Component {
 	handleChange = event => {
 		const value = event.target.value;
+		const page = this.props.match.params.page;
+
 		this.props.searchMovie(value);
+		if(page > 1) this.props.history.push('/home/1');		
 	}
 
 	debouncedHandleChange = (...args) => {

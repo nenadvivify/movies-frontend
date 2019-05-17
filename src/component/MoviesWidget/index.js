@@ -10,6 +10,7 @@ class PopularMovies extends Component {
 	showMovies = () => {
 		return this.props.movies.map(movie => {
 			const to = '/movies/' + movie.id; 
+			
 			return (
 				<div key={movie.id} className="movies-widget-item media">
 					<img className="media-image" src={movie.image_url} alt=""/>
@@ -19,7 +20,10 @@ class PopularMovies extends Component {
 							<Link className="media-body-title" to={to}>{movie.title}</Link>
 							{
 								this.props.withGenre && (
-									<span className="genre">{movie.genre && movie.genre.name}</span>
+									<div className="media-body-genre">
+										<span>Genre: </span>
+										<span>{movie.genre && movie.genre.name}</span>
+									</div>
 								)
 							}
 							<p className="media-body-description">{this.excerpt(movie.description, 65)}</p>
@@ -28,7 +32,7 @@ class PopularMovies extends Component {
 						{
 							this.props.withLikes && (
 								<div className="media-body-likes">
-									<i class="fa fa-thumbs-up" aria-hidden="true"></i>
+									<i className="fa fa-thumbs-up" aria-hidden="true"></i>
 									<span className="likes-value">{movie.likes}</span>
 								</div>
 							)

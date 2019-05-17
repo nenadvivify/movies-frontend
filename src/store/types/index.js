@@ -10,6 +10,7 @@ export const GET_MOVIES = 'GET_MOVIES';
 export const GET_MOVIE = 'GET_MOVIE';
 export const SEARCH_MOVIE = 'SEARCH_MOVIE';
 export const VOTE_MOVIE = 'VOTE_MOVIE';
+export const GET_SIMILAR = 'GET_SIMILAR';
 
 export const GET_FILTERS = 'GET_FILTERS';
 export const TOGGLE_FILTER = 'TOGGLE_FILTER';

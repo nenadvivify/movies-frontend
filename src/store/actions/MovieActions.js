@@ -2,7 +2,8 @@ import {
 	GET_MOVIES, 
 	GET_MOVIE,
 	SEARCH_MOVIE,
-	VOTE_MOVIE
+	VOTE_MOVIE,
+	GET_SIMILAR
 } from 'store/types';
 import axios from 'axios';
 import config from 'config';
@@ -44,6 +45,17 @@ export const voteMovie = data => {
 			dispatch({type: VOTE_MOVIE, payload: res.data});
 		} catch(error) {
 			console.log("Vote action failed.")
+		}
+	}
+}
+
+export const getSimilar = data => {
+	return async dispatch => {
+		try {
+			const res = await axios.post(`${MOVIES_URL}/similar`, data);
+			dispatch({type: GET_SIMILAR, payload: res.data});
+		} catch(error) {
+			console.log("Get similar action failed.")
 		}
 	}
 }

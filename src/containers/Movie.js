@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getMovie } from 'store/actions/MovieActions';
+import { getMovie, getSimilar } from 'store/actions/MovieActions';
 import Movie from 'component/MovieSingle';
 
 class Home extends Component {
   componentDidMount() {
     const movieId = this.props.match.params.movieId;
-    this.props.getMovie(movieId)
+    this.props.getMovie(movieId);
+    this.props.getSimilar({movie_id: movieId})
+  }
+
+  componentDidUpdate(prevProps) {
+    const movieId = this.props.match.params.movieId;
+    if(movieId !== prevProps.match.params.movieId) {
+      this.props.getMovie(movieId);
+      this.props.getSimilar({movie_id: movieId})
+    }
   }
 
   render() {
@@ -23,26 +32,16 @@ class Home extends Component {
   }
 }
 
-const getSimilar = (movies, active, len) => {
-  if(!movies || !active) return [];
-
-  return movies.filter(movie => {
-    return movie.genre.name === active.genre.name
-  }).slice(0, len);
-}
-
 const mapStateToProps = state => {
-  const {active, all} = state.movies;
-  const similar = getSimilar(all, active, 10);
-
   return {
-    movie: active,
-    similar
+    movie: state.movies.active,
+    similar: state.movies.similar
   }
 }
 
 const mapDispatchToProps = {
-  getMovie
+  getMovie,
+  getSimilar
 };
 
 export default withRouter(

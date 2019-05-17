@@ -1,11 +1,13 @@
 import {
+  VOTE_MOVIE,
 	GET_MOVIES,
-	VOTE_MOVIE,
-  GET_MOVIE
+  GET_MOVIE,
+  GET_SIMILAR
 } from 'store/types';
 
 const initialState = {
   all: [],
+  similar: [],
   active: null
 }
 
@@ -16,6 +18,9 @@ const movieReducer = (state = initialState, action) => {
 
     case GET_MOVIE:
       return {...state, active: action.payload}
+
+    case GET_SIMILAR:
+      return {...state, similar: action.payload}
 
     case VOTE_MOVIE:
       const newState = {...state}

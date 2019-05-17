@@ -19,12 +19,6 @@ class Home extends Component {
     window.scrollTo(0, 0);
   }
 
-  getTopMovies = (len) => {
-    const movies = [...this.props.movies];
-    movies.sort((a, b) => b.likes - a.likes);
-    return movies.slice(0, len);
-  }
-
   renderMovies = () => {
     const movies = this.props.movies;
     
@@ -68,7 +62,7 @@ class Home extends Component {
 
               <MoviesWidget 
               title="Most popular movies"
-              movies={this.getTopMovies(10)}
+              movies={this.props.popular}
               withLikes withBadge />
             </div>
           </div>
@@ -104,16 +98,24 @@ function applyFilters(movies, filters) {
   })
 }
 
+function mostPopular(movies, length) {
+  const copy = [...movies];
+  copy.sort((a, b) => b.likes - a.likes);
+  return copy.slice(0, length);
+}
+
 const mapStateToProps = (state, props) => {
   const {searchText, movies} = state;
   const afterSearch = applySearchText(movies.all, searchText);
   const afterFilters = applyFilters(afterSearch, state.filters.active);
   const afterSlice = slicePerPage(afterFilters, props, 10)
+  const popular = mostPopular(movies.all, 10);
   
   return {
-    searchText,
     total: afterFilters.length,
-    movies: afterSlice
+    movies: afterSlice,
+    searchText,
+    popular
   }
 };
 
