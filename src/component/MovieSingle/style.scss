@@ -33,7 +33,7 @@
 	}
 
 	&-body {
-		padding: 1.2rem;
+		padding: 1.2rem 0;
 	}
 	
 	&-title {
@@ -45,13 +45,12 @@
 	}
 
 	&-description {
-		font-size: 1.2rem;
+		font-size: 1rem;
 		margin-top: 10px;
 		font-weight: 300;
 	}
 
 	&-info-field {
-		margin-bottom: 10px;
 		display: flex;
 		align-items: center;
 

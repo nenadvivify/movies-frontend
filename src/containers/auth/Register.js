@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { register } from 'store/actions/AuthActions';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 import './style.scss';
 
 class Register extends Component {
@@ -13,7 +13,8 @@ class Register extends Component {
     name: ''
   };
 
-  handleInputChange = field => event => this.setState({ [field]: event.target.value });
+  handleInputChange = field => event => this.setState({
+    [field]: event.target.value });
 
   submit = event => {
     event.preventDefault();

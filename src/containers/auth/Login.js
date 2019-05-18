@@ -11,7 +11,8 @@ class Login extends Component {
     password: ''
   };
 
-  handleInputChange = field => event => this.setState({ [field]: event.target.value });
+  handleInputChange = field => event => this.setState({
+    [field]: event.target.value });
 
   submit = event => {
     event.preventDefault();

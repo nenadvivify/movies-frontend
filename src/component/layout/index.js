@@ -15,7 +15,7 @@ import './index.scss';
 
 class AppLayout extends React.Component {
   componentDidMount() {
-    if (this.props.user) {
+    if(this.props.user) {
       if(this.props.location.pathname === '/') {
         this.props.history.push('/home');
       }
@@ -27,8 +27,8 @@ class AppLayout extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.user !== prevProps.user) {
-      if (this.props.user) {
+    if(this.props.user !== prevProps.user) {
+      if(this.props.user) {
         this.props.history.push('/home');
       } else {
         this.props.history.push('/login');

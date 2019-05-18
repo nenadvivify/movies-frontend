@@ -11,6 +11,8 @@ export const GET_MOVIE = 'GET_MOVIE';
 export const SEARCH_MOVIE = 'SEARCH_MOVIE';
 export const VOTE_MOVIE = 'VOTE_MOVIE';
 export const GET_SIMILAR = 'GET_SIMILAR';
+export const CREATE_COMMENT = 'CREATE_COMMENT';
+export const REMOVE_ACTIVE = 'REMOVE_ACTIVE';
 
 export const GET_FILTERS = 'GET_FILTERS';
 export const TOGGLE_FILTER = 'TOGGLE_FILTER';

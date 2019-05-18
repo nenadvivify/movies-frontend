@@ -1,5 +1,4 @@
-// import {LOGIN, REGISTER, LOGIN_ERROR, REGISTER_ERROR} from 'store/types';
-import {AUTH_USER} from 'store/types';
+import { AUTH_USER } from 'store/types';
 import axios from 'axios';
 import config from 'config';
 import AuthService from 'services/AuthService';
@@ -9,10 +8,6 @@ const AUTH_URL = config.API_BASE_URL + '/api/auth';
 export const register = registerData => {
   return async dispatch => {
     try {
-      // const res = await axios.post(AUTH_URL + '/register', registerData);
-      // dispatch({ type: REGISTER, payload: res.data });
-      // return res.data;
-
       const res = await AuthService.signup(registerData);
       return res.data;
     } catch (error) {
@@ -25,14 +20,10 @@ export const register = registerData => {
 export const logIn = logInData => {
   return async dispatch => {
     try {
-      // const res = await axios.post(AUTH_URL + '/login', logInData);
-      // dispatch({ type: LOGIN, payload: res.data });
-      // return res.data;
       const res = await AuthService.login(logInData);
       return res.data;
     } catch (error) {
       // dispatch({ type: LOGIN_ERROR, payload: error })
-      // console.log(error.response.data.message)
       throw new Error("Wrong email or password");
     }
   }

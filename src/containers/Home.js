@@ -21,7 +21,7 @@ class Home extends Component {
 
   renderMovies = () => {
     const movies = this.props.movies;
-    
+
     if(!movies.length) {
       return <div style={{padding: "150px 0", margin: "0 auto"}}>
         <h1 className="display-4">No movies found</h1>
@@ -105,12 +105,12 @@ function mostPopular(movies, length) {
 }
 
 const mapStateToProps = (state, props) => {
-  const {searchText, movies} = state;
+  const { searchText, movies } = state;
   const afterSearch = applySearchText(movies.all, searchText);
   const afterFilters = applyFilters(afterSearch, state.filters.active);
   const afterSlice = slicePerPage(afterFilters, props, 10)
   const popular = mostPopular(movies.all, 10);
-  
+
   return {
     total: afterFilters.length,
     movies: afterSlice,
