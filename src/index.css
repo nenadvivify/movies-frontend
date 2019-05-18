@@ -14,7 +14,6 @@ code {
     monospace;
 }
 
-
 .Toastify__toast {
   min-height: 55px;
   align-items: center;
@@ -71,6 +70,12 @@ input:-moz-placeholder {
   color: #acacac !important;
   font-size: 0.85rem;
   font-weight: 300;
+}
+
+textarea,
+input {
+  font-weight: 300 !important;
+  color: #222;
 }
 
 @media(min-width: 768px) and (max-width: 992px) {

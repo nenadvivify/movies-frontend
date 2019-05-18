@@ -47,7 +47,7 @@ class Movie extends Component {
 
           <div className="col-lg-4 sidebar">
             <MoviesWidget  
-            title={"Similar movies"}
+            title={"Related movies"}
             movies={this.props.similar}
             withGenre />
           </div>
