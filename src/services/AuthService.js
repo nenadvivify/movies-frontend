@@ -16,9 +16,7 @@ class AuthService extends ApiService {
     const token = this.getToken();
     const user = this.getUser();
 
-
-
-    if (token && user) {
+    if(token && user) {
       const isExpired = Date.now() > Date(user.expireDate);
 
       if(isExpired) {
@@ -32,7 +30,7 @@ class AuthService extends ApiService {
 
   setAuthorizationHeader = () => {
     const token = this.getToken();
-    if (token) {
+    if(token) {
       this.api.attachHeaders({
         Authorization: `Bearer ${token}`
       });
@@ -41,7 +39,7 @@ class AuthService extends ApiService {
 
   createSession = user => {
     let expireDate = Date.now() + user.expires_in;
-    let data = {...user, expireDate};
+    let data = { ...user, expireDate };
 
     localStorage.setItem('user', JSON.stringify(data));
     this.setAuthorizationHeader();

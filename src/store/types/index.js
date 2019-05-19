@@ -7,7 +7,13 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const REGISTER_ERROR = 'REGISTER_ERROR';
 
 export const GET_MOVIES = 'GET_MOVIES';
+export const GET_MOVIES_START = 'GET_MOVIES_START';
+export const GET_MOVIES_COMLETED = 'GET_MOVIES_COMLETED';
+
 export const GET_MOVIE = 'GET_MOVIE';
+export const GET_MOVIE_START = 'GET_MOVIE_START';
+export const GET_MOVIE_COMPLETED = 'GET_MOVIE_COMPLETED';
+
 export const SEARCH_MOVIE = 'SEARCH_MOVIE';
 export const VOTE_MOVIE = 'VOTE_MOVIE';
 export const GET_SIMILAR = 'GET_SIMILAR';

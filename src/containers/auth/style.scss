@@ -1,10 +1,23 @@
 .auth-page {
-	min-height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-	.full-width {
-		width: 100%;
-	}
+  .full-width {
+    width: 100%;
+  }
+
+  .form-submit {
+    display: flex;
+    align-items: center;
+  }
+
+  .signup-text {
+    margin-bottom: 10px;
+
+    a {
+      margin-left: 5px;
+    }
+  }
 }

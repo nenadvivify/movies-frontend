@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { logIn } from '../../store/actions/AuthActions';
 import { toast } from 'react-toastify';
+import Spinner from 'component/Spinner';
 import './style.scss';
 
 class Login extends Component {
   state = {
     email: '',
-    password: ''
+    password: '',
+    loading: false
   };
 
   handleInputChange = field => event => this.setState({
-    [field]: event.target.value });
+    [field]: event.target.value
+  });
 
   submit = event => {
     event.preventDefault();
@@ -22,10 +25,13 @@ class Login extends Component {
       password: this.state.password
     };
 
-    this.props.logIn(logInData).then(res => {
-      window.location.replace("/home");
-    }).catch(err => {
-      toast.error(err.message);
+    this.setState({ loading: true }, () => {
+      this.props.logIn(logInData).then(res => {
+        window.location.replace("/home");
+      }).catch(err => {
+        toast.error(err.message);
+        this.setState({ loading: false })
+      })
     })
   };
 
@@ -42,28 +48,38 @@ class Login extends Component {
           <div className="col-sm-8 col-lg-6 mx-auto">
             <form onSubmit={this.submit}>
               <h2>Log In</h2>
-              <div className="form-group">
-                <input
-                  type="text"
-                  placeholder="Email"
-                  className="form-control"
-                  value={this.state.email}
-                  onChange={this.handleInputChange('email')}
-                />
-              </div>
+              
+              <fieldset disabled={this.state.loading}>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    placeholder="Email"
+                    className="form-control"
+                    value={this.state.email}
+                    onChange={this.handleInputChange('email')}
+                  />
+                </div>
 
-              <div className="form-group">
-                <input
-                  type="password"
-                  placeholder="Password"
-                  className="form-control"
-                  value={this.state.password}
-                  onChange={this.handleInputChange('password')}
-                />
-              </div>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    className="form-control"
+                    value={this.state.password}
+                    onChange={this.handleInputChange('password')}
+                  />
+                </div>
 
-              <input className="btn btn-primary" type="submit" value="Log in" />
-              {this.props.loginError && <p>Login error</p>}
+                <div className="signup-text">
+                  <span>Don't have an account yet?</span>
+                  <Link to="/register">Register</Link>
+                </div>
+
+                <div className="form-submit">
+                  <input className="btn btn-primary" type="submit" value="Log in" />
+                  <Spinner style={{marginLeft: 15}} show={this.state.loading} />
+                </div>
+              </fieldset>
             </form>
           </div>
         </div>
@@ -74,8 +90,7 @@ class Login extends Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.authUser,
-    loginError: state.error.loginError
+    user: state.authUser
   };
 };
 

@@ -6,6 +6,7 @@ import errorReducer from './ErrorReducer';
 import movieReducer from './MovieReducer';
 import searchReducer from './SearchReducer';
 import filtersReducer from './FiltersReducer';
+import loadingReducer from './LoadingReducer';
 
 export default history =>
   combineReducers({
@@ -14,5 +15,6 @@ export default history =>
     error: errorReducer,
     movies: movieReducer,
     searchText: searchReducer,
-    filters: filtersReducer
+    filters: filtersReducer,
+    loading: loadingReducer
   });

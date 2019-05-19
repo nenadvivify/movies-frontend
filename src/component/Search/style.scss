@@ -3,14 +3,14 @@
     height: auto;
     border: none;
     padding: 0.75rem 2em;
-    box-shadow: 0 0 5px rgba(117, 117, 117, 0.17);
+    box-shadow: 0 1px 3px rgba(140, 140, 140, 0.15);
     background: rgb(247, 247, 247);
     transition: all 0.25s;
     margin-bottom: 30px;
     line-height: 1;
 
     &:focus {
-      box-shadow: 0 0 5px rgba(117, 117, 117, 0.17);
+      box-shadow: 0 1px 3px rgba(140, 140, 140, 0.15);
     }
   }
 }
