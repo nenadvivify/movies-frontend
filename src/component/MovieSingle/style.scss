@@ -1,63 +1,84 @@
 .center {
-	min-height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .movie-single {
-	padding: 2rem 0;
+  padding: 2rem 0;
 
-	.not-found {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+  .not-found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .movie {
-	&-image {
-		width: 100%;
-	}
 
-	&-header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
+  &-empty {
+    padding: 250px 0;
+    text-align: center;
+    width: 100%;
 
-	&-info {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
+    h1 {
+      color: #777;
+      font-size: 2.4rem;
+    }
+  }
 
-	&-body {
-		padding: 1.2rem 0;
-	}
-	
-	&-title {
-		text-transform: capitalize;
-		font-weight: 100;
-		font-size: 2.4rem;
-		margin: 15px 0;
-		margin-top: 0;
-	}
+  &-content-loading,
+  &-sidebar-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 11rem);
+  }
 
-	&-description {
-		font-size: 1rem;
-		margin-top: 10px;
-		font-weight: 300;
-	}
+  &-image {
+    width: 100%;
+  }
 
-	&-info-field {
-		display: flex;
-		align-items: center;
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
 
-		.text-value {
-			color: #777;
-			margin-left: 10px;
-			font-style: italic;
-		}
-	}
+  &-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-body {
+    padding: 1.2rem 0;
+  }
+
+  &-title {
+    text-transform: capitalize;
+    font-weight: 100;
+    font-size: 2rem;
+    margin: 15px 0;
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+
+  &-description {
+    font-size: 1rem;
+    margin-top: 10px;
+    font-weight: 300;
+  }
+
+  &-info-field {
+    display: flex;
+    align-items: center;
+
+    .text-value {
+      color: #777;
+      margin-left: 10px;
+      font-style: italic;
+    }
+  }
 }

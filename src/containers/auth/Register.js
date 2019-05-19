@@ -97,7 +97,7 @@ class Register extends Component {
 
                 <div className="form-submit">
                   <input className="btn btn-primary" type="submit" value="Register" />
-                  <Spinner show={this.state.loading} />
+                  <Spinner style={{marginLeft: 15}} show={this.state.loading} />
                 </div>
               </fieldset>
 

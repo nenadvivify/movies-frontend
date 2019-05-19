@@ -37,7 +37,28 @@ code {
 .display-2,
 .display-3,
 .display-4 {
-  font-weight: 100 !important;
+  font-weight: 300;
+}
+
+.navbar {
+  box-shadow: 0 1px 3px rgba(140, 140, 140, 0.15);
+  background-color: rgb(247, 247, 247) !important;
+}
+
+.card-header {
+  box-shadow: 0 1px 3px rgba(140, 140, 140, 0.15);
+  background-color: rgb(247, 247, 247);
+  border-bottom: none;
+}
+
+.card-header {
+  z-index: 2;
+  position: relative;
+}
+
+.card-body {
+  position: relative;
+  z-index: 1;
 }
 
 textarea::-webkit-input-placeholder,

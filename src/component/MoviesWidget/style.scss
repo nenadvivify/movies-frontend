@@ -1,72 +1,73 @@
 .movies-widget {
-	margin-bottom: 25px;
+  margin-bottom: 25px;
 
-	.card-body {
-		padding: 0!important;
-	}
+  .card-body {
+    padding: 0 !important;
+  }
 
-	.card-header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-	&-item {
-		border: none !important;
-		margin-bottom: 0px !important;
-		transition: all 0.25s ease-in;
-		border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
-		padding: 5px 0 !important;
-		align-items: center !important;
-		display: flex;
-		width: 100%;
+  &-item {
+    border: none !important;
+    margin-bottom: 0px !important;
+    transition: all 0.25s ease-in;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    padding: 5px 0 !important;
+    align-items: center !important;
+    display: flex;
+    width: 100%;
 
 
-		&:last-child {
-			border-bottom: none !important;
-		}
+    &:last-child {
+      border-bottom: none !important;
+    }
 
-		&:hover {
-			background: #EAF4FD;
-		}
-	}
+    &:hover {
+      background: #EAF4FD;
+    }
+  }
 
-	.media-image {
-		max-width: 50px;
-	}
+  .media-image {
+    max-width: 50px;
+  }
 
-	.media-body {
-		margin-left: 10px;
-		font-size: 14px;
-		font-weight: 300;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
+  .media-body {
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-		&-genre {
-			font-size: 12px;
-			color: #777;
-		}
+    &-genre {
+      font-size: 12px;
+      color: #777;
+    }
 
-		&-title {
-			text-transform: capitalize;
-		}
+    &-title {
+      text-transform: capitalize;
+    }
 
-		&-description {
-			color: #777;
-			margin-bottom: 0;
-		}
+    &-description {
+      color: #777;
+      margin-bottom: 0;
+    }
 
-		&-likes {
-			font-style: 12px;
-			margin-left: 10px;
-			display: flex;
+    &-likes {
+      font-size: 12px;
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
 
-			i {
-				margin-right: 5px;
-				color: #ccc;
-			}
-		}
-	}
+      i {
+        margin-right: 5px;
+        color: #2AC66D;
+      }
+    }
+  }
 
 }

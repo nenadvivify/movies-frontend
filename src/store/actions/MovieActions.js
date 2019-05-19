@@ -1,6 +1,10 @@
 import {
   GET_MOVIES,
   GET_MOVIE,
+  GET_MOVIES_COMLETED,
+  GET_MOVIE_COMPLETED,
+  GET_MOVIES_START,
+  GET_MOVIE_START,
   SEARCH_MOVIE,
   VOTE_MOVIE,
   GET_SIMILAR,
@@ -22,24 +26,32 @@ export const removeActive = () => {
 
 export const getMovies = () => {
   return async dispatch => {
+    dispatch({ type: GET_MOVIES_START });
+
     try {
       const res = await axios.get(MOVIES_URL);
       dispatch({ type: GET_MOVIES, payload: res.data })
+      dispatch({ type: GET_MOVIES_COMLETED })
       return res.data;
     } catch (error) {
       console.log("Get all movies action failed.")
+      dispatch({ type: GET_MOVIES_COMLETED })
     }
   }
 }
 
 export const getMovie = id => {
   return async dispatch => {
+    dispatch({ type: GET_MOVIE_START });
+
     try {
       const res = await axios.get(`${MOVIES_URL}/${id}`);
       dispatch({ type: GET_MOVIE, payload: res.data });
+      dispatch({ type: GET_MOVIE_COMPLETED })
       return res.data;
     } catch (error) {
       console.log("Get movie action failed.")
+      dispatch({ type: GET_MOVIE_COMPLETED })
     }
   }
 }

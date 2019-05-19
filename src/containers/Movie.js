@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getMovie, getSimilar, removeActive } from 'store/actions/MovieActions';
-import Movie from 'component/MovieSingle';
+import MovieSingle from 'component/MovieSingle';
 
 class Home extends Component {
   componentDidMount() {
@@ -24,12 +24,9 @@ class Home extends Component {
   }
 
   render() {
-    if(!this.props.movie) {
-      return null;
-    }
-
     return (
-      <Movie 
+      <MovieSingle 
+      loading={this.props.loading}
       similar={this.props.similar}
       movie={this.props.movie} />
     );
@@ -39,7 +36,8 @@ class Home extends Component {
 const mapStateToProps = state => {
   return {
     movie: state.movies.active,
-    similar: state.movies.similar
+    similar: state.movies.similar,
+    loading: state.loading
   }
 }
 
