@@ -4,7 +4,11 @@ import config from '../config';
 class HttpService {
   constructor(options = {}) {
     this.client = axios.create(options);
-    this.client.interceptors.response.use(this.handleSuccessResponse, this.handleErrorResponse);
+    // this.client.interceptors.response.use(
+    //   this.handleSuccessResponse, 
+    //   this.handleErrorResponse
+    // );
+    
     this.unauthorizedCallback = () => {};
   }
 
@@ -24,11 +28,12 @@ class HttpService {
     const { status } = error.response;
 
     switch (status) {
-      case 401: {
-        this.unauthorizedCallback();
-        break;
-      }
-      
+      case 401:
+        {
+          this.unauthorizedCallback();
+          break;
+        }
+
       default:
         break;
     }
