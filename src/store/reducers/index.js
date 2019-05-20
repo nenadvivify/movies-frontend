@@ -7,6 +7,7 @@ import movieReducer from './MovieReducer';
 import searchReducer from './SearchReducer';
 import filtersReducer from './FiltersReducer';
 import loadingReducer from './LoadingReducer';
+import watchlistReducer from './WatchlistReducer';
 
 export default history =>
   combineReducers({
@@ -16,5 +17,6 @@ export default history =>
     movies: movieReducer,
     searchText: searchReducer,
     filters: filtersReducer,
-    loading: loadingReducer
+    loading: loadingReducer,
+    watchlist: watchlistReducer
   });

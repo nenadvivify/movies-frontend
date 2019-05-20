@@ -42,8 +42,12 @@
 
   &-header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    flex-direction: column;
+    // flex-direction: column;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+    padding-bottom: 15px;
+    padding-top: 15px;
   }
 
   &-info {
@@ -61,7 +65,7 @@
     font-weight: 100;
     font-size: 2rem;
     margin: 15px 0;
-    margin-top: 15px;
+    margin-top: 0;
     margin-bottom: 0;
   }
 

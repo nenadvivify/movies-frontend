@@ -1,6 +1,11 @@
 .movies-widget {
   margin-bottom: 25px;
 
+  .empty-message {
+    color: #9c9c9c;
+    padding: 0.75rem 1.25rem;
+  }
+
   .card-body {
     padding: 0 !important;
   }
@@ -16,7 +21,7 @@
     margin-bottom: 0px !important;
     transition: all 0.25s ease-in;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
-    padding: 5px 0 !important;
+    padding: 5px 10px !important;
     align-items: center !important;
     display: flex;
     width: 100%;
@@ -30,6 +35,7 @@
       background: #EAF4FD;
     }
   }
+
 
   .media-image {
     max-width: 50px;

@@ -73,6 +73,15 @@ class MoviesList extends Component {
         title="Most popular movies"
         movies={this.props.popular}
         withLikes withBadge />
+
+        <MoviesWidget  
+        withDate
+        withWatchlist
+        withToggleWatched
+        withDescription={false}
+        title={"Watchlist"}
+        emptyMessage={"Empty watchlist"}
+        movies={this.props.watchlist} />
       </Fragment>
     )
   }

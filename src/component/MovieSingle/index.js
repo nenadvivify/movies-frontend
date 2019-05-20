@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import MoviesWidget from 'component/MoviesWidget';
 import MovieComments from 'component/MovieComments';
@@ -52,10 +52,21 @@ class Movie extends Component {
 
   renderSidebar = () => {
     return (
-      <MoviesWidget  
-      title={"Related movies"}
-      movies={this.props.similar}
-      withGenre />
+      <Fragment>
+        <MoviesWidget  
+        title={"Related movies"}
+        movies={this.props.similar}
+        withGenre />
+
+        <MoviesWidget 
+        withDate 
+        withWatchlist
+        withToggleWatched
+        title={"Watchlist"}
+        withDescription={false}
+        emptyMessage={"Empty watchlist"}
+        movies={this.props.watchlist} />
+      </Fragment>
     )
   }
 

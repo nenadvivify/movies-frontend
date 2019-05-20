@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import WatchlistControls from 'component/Watchlist/controls';
+import ToggleShowWatched from 'component/Watchlist/toggle';
+import moment from 'moment';
 import './style.scss';
 
 class PopularMovies extends Component {
@@ -8,7 +11,15 @@ class PopularMovies extends Component {
   }
 
   showMovies = () => {
-    return this.props.movies.map(movie => {
+    const { movies, emptyMessage } = this.props;
+
+    if(!movies.length) {
+      return <div className="empty-message">
+        {emptyMessage || "Nothing found"}
+      </div>
+    }
+
+    return movies.map(movie => {
       const to = '/movies/' + movie.id;
 
       return (
@@ -26,7 +37,27 @@ class PopularMovies extends Component {
                   </div>
                 )
               }
-              <p className="media-body-description">{this.excerpt(movie.description, 65)}</p>
+
+              {
+                this.props.withDescription !== false && (
+                  <p className="media-body-description">{this.excerpt(movie.description, 65)}</p>
+                )
+              }
+
+              {
+                movie.pivot && this.props.withDate && (
+                  <p className="media-body-description">
+                    <span>Added: </span>
+                    <span>{moment(movie.pivot.created_at).fromNow()}</span>
+                  </p>
+                )
+              }
+
+              {
+                this.props.withWatchlist && (
+                  <WatchlistControls movie={movie} />
+                )
+              }
             </div>
 
             {
@@ -51,6 +82,12 @@ class PopularMovies extends Component {
           {
             this.props.withBadge && (
               <span className="badge badge-primary">Top {this.props.movies.length}</span>
+            )
+          }
+
+          {
+            this.props.withToggleWatched && (
+              <ToggleShowWatched />
             )
           }
           </div>

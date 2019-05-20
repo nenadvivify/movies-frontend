@@ -2,15 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getMovies, searchMovie } from 'store/actions/MovieActions';
+import { getWatchlist } from 'store/actions/WatchlistActions';
 import MoviesList from 'component/MoviesList';
 
 class Home extends Component {
   componentDidMount = () => {
     this.props.getMovies();
+    this.props.getWatchlist();
   }
 
   render() {
     return <MoviesList 
+    watchlist={this.props.watchlist}
     movies={this.props.movies}
     popular={this.props.popular}
     total={this.props.total}
@@ -51,25 +54,36 @@ function mostPopular(movies, length) {
   return copy.slice(0, length);
 }
 
+function filterWatched(movies, showWatched) {
+  if(showWatched) return movies;
+  return movies.filter(({ pivot }) => !pivot.watched)
+}
+
 const mapStateToProps = (state, props) => {
   const { searchText, movies } = state;
   const afterSearch = applySearchText(movies.all, searchText);
   const afterFilters = applyFilters(afterSearch, state.filters.active);
   const afterSlice = slicePerPage(afterFilters, props, 10)
   const popular = mostPopular(movies.all, 10);
+  const watchlist = filterWatched(
+    state.watchlist.all,
+    state.watchlist.showWatched
+  );
 
   return {
     total: afterFilters.length,
     movies: afterSlice,
     loading: state.loading,
     searchText,
+    watchlist,
     popular
   }
 };
 
 const mapDispatchToProps = {
   getMovies,
-  searchMovie
+  searchMovie,
+  getWatchlist
 };
 
 export default withRouter(
