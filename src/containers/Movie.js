@@ -3,22 +3,31 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getMovie, getSimilar, removeActive } from 'store/actions/MovieActions';
 import { getWatchlist } from 'store/actions/WatchlistActions';
+import { toast } from 'react-toastify';
 import MovieSingle from 'component/MovieSingle';
 
 class Home extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     const movieId = this.props.match.params.movieId;
-    this.props.getWatchlist();
-    this.props.getMovie(movieId);
-    this.props.getSimilar({ movie_id: movieId })
+    try {
+      await this.props.getWatchlist();
+      await this.props.getMovie(movieId);
+      await this.props.getSimilar({ movie_id: movieId })
+    } catch (err) {
+      toast.error(err.message);
+    }
   }
 
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps) {
     const movieId = this.props.match.params.movieId;
     if(movieId !== prevProps.match.params.movieId) {
-      this.props.getWatchlist();
-      this.props.getMovie(movieId);
-      this.props.getSimilar({ movie_id: movieId })
+      try {
+        await this.props.getWatchlist();
+        await this.props.getMovie(movieId);
+        await this.props.getSimilar({ movie_id: movieId })
+      } catch (err) {
+        toast.error(err.message);
+      }
     }
   }
 

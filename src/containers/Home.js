@@ -3,12 +3,17 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getMovies, searchMovie } from 'store/actions/MovieActions';
 import { getWatchlist } from 'store/actions/WatchlistActions';
+import { toast } from 'react-toastify';
 import MoviesList from 'component/MoviesList';
 
 class Home extends Component {
-  componentDidMount = () => {
-    this.props.getMovies();
-    this.props.getWatchlist();
+  componentDidMount = async () => {
+    try {
+      await this.props.getMovies();
+      await this.props.getWatchlist();
+    } catch (err) {
+      toast.error(err.message);
+    }
   }
 
   render() {
