@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import MoviesWidget from 'component/MoviesWidget';
 import MovieComments from 'component/MovieComments';
-import MovieCommentsForm from 'component/MovieComments/form';
+import MovieCommentsForm from 'component/MovieComments/form-hooks';
 import MovieBody from './body';
 import MovieHeader from './header';
 import MoviePreview from './preview';

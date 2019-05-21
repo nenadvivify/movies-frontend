@@ -9,7 +9,7 @@ import './style.scss';
 const initial = {
   title: "",
   description: "",
-  image_url: faker.image.imageUrl(),
+  image_url: faker.image.image(),
   genre_id: ""
 }
 
@@ -46,7 +46,6 @@ class MovieCreate extends Component {
       await this.props.createMovie(data);
       toast.success(`Added: ${data.title}`);
       this.clear();
-      // this.props.history.push('/home');
     } catch (err) {
       return toast.error(err.message);
     }
