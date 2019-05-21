@@ -47,7 +47,7 @@ class Login extends Component {
         <div className="row full-width">
           <div className="col-sm-8 col-lg-6 mx-auto">
             <form onSubmit={this.submit}>
-              <h2>Log In</h2>
+              <h2 className="display-4">Log In</h2>
               
               <fieldset disabled={this.state.loading}>
                 <div className="form-group">

@@ -2,7 +2,6 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter, Switch } from 'react-router-dom';
-
 import { authUser } from 'store/actions/AuthActions';
 import Login from 'containers/auth/Login';
 import Register from 'containers/auth/Register';
@@ -10,6 +9,7 @@ import Home from 'containers/Home';
 import Navbar from 'component/Navbar';
 import Footer from 'component/Footer';
 import Movie from 'containers/Movie';
+import Create from 'containers/Create';
 import NotFound from 'component/NotFound';
 import './index.scss';
 
@@ -45,6 +45,7 @@ class AppLayout extends React.Component {
           <Route exact path="/home/:page?" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/movies/create" component={Create} />
           <Route path="/movies/:movieId" component={Movie} />
           <Route exact path='*' component={NotFound} />
         </Switch>

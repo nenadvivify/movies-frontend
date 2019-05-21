@@ -9,7 +9,8 @@ import {
   VOTE_MOVIE,
   GET_SIMILAR,
   CREATE_COMMENT,
-  REMOVE_ACTIVE
+  REMOVE_ACTIVE,
+  CREATE_MOVIE
 } from 'store/types';
 import axios from 'axios';
 import config from 'config';
@@ -52,6 +53,19 @@ export const getMovie = id => {
     } catch (error) {
       console.log("Get movie action failed.")
       dispatch({ type: GET_MOVIE_COMPLETED })
+    }
+  }
+}
+
+export const createMovie = data => {
+  return async dispatch => {
+    try {
+      const res = await axios.post(`${MOVIES_URL}`, data);
+      dispatch({ type: CREATE_MOVIE, payload: res.data });
+      return res.data;
+    } catch (error) {
+      const message = 'Create movie failed';
+      throw new Error(message);
     }
   }
 }

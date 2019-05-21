@@ -69,7 +69,7 @@ const mapStateToProps = (state, props) => {
   const afterSearch = applySearchText(movies.all, searchText);
   const afterFilters = applyFilters(afterSearch, state.filters.active);
   const afterSlice = slicePerPage(afterFilters, props, 10)
-  const popular = mostPopular(movies.all, 10);
+  const popular = mostPopular(movies.all, 5);
   const watchlist = filterWatched(
     state.watchlist.all,
     state.watchlist.showWatched

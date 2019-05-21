@@ -4,7 +4,8 @@ import {
   GET_MOVIE,
   GET_SIMILAR,
   CREATE_COMMENT,
-  REMOVE_ACTIVE
+  REMOVE_ACTIVE,
+  CREATE_MOVIE
 } from 'store/types';
 
 const initialState = {
@@ -26,6 +27,12 @@ const movieReducer = (state = initialState, action) => {
 
     case REMOVE_ACTIVE:
       return { ...state, active: null }
+
+    case CREATE_MOVIE:
+      return {
+        ...state,
+        all: [action.payload, ...state.all]
+      }
 
     case CREATE_COMMENT:
       if(!state.active) {

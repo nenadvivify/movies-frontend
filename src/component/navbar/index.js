@@ -23,6 +23,10 @@ class Navbar extends Component {
       </li>
 
       <li className="nav-item">
+        <Link className="nav-link" to="/movies/create">Create</Link>
+      </li>
+
+      <li className="nav-item">
         <a 
         onClick={this.handleLogout}
         className="nav-link" 

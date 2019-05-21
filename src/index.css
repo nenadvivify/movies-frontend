@@ -37,7 +37,13 @@ code {
 .display-2,
 .display-3,
 .display-4 {
-  font-weight: 300;
+  font-weight: 100 !important;
+  font-size: 3rem !important;
+
+
+  @media(max-width: 768px) {
+    font-size: 2rem !important;
+  }
 }
 
 .navbar {

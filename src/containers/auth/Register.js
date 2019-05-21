@@ -52,7 +52,7 @@ class Register extends Component {
         <div className="row full-width">
           <div className="col-sm-8 col-lg-6 mx-auto">
             <form onSubmit={this.submit}>
-              <h2>Register</h2>
+              <h2 className="display-4">Register</h2>
               
               <fieldset disabled={this.state.loading}>
                 <div className="form-group">
