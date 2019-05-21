@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
 import { pick } from 'lodash';
+import faker from 'faker';
+
+import MoviesWidget from 'component/MoviesWidget';
 import './style.scss';
 
 const initial = {
   title: "",
   description: "",
-  image_url: "https://lorempixel.com/640/480/?79819",
+  image_url: faker.image.imageUrl(),
   genre_id: ""
 }
 
@@ -43,7 +46,7 @@ class MovieCreate extends Component {
       await this.props.createMovie(data);
       toast.success(`Added: ${data.title}`);
       this.clear();
-      this.props.history.push('/home');
+      // this.props.history.push('/home');
     } catch (err) {
       return toast.error(err.message);
     }
@@ -123,6 +126,14 @@ class MovieCreate extends Component {
                 </button>
               </div>
             </form>
+          </div>
+
+          <div className="col-md-4 sidebar">
+            <MoviesWidget
+            movies={this.props.recent}
+            title="Recent movies"
+            withDescription
+            withGenre />
           </div>
         </div>
       </div>

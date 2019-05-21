@@ -8,6 +8,7 @@
     "bootstrap": "^4.3.1",
     "connected-react-router": "^6.3.1",
     "debounce": "^1.2.0",
+    "faker": "^4.1.0",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
