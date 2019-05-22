@@ -10,7 +10,9 @@ import {
   GET_SIMILAR,
   CREATE_COMMENT,
   REMOVE_ACTIVE,
-  CREATE_MOVIE
+  CREATE_MOVIE,
+  SEARCH_MOVIE_INDEXED,
+  CLEAR_MOVIE_INDEXED
 } from 'store/types';
 import axios from 'axios';
 import config from 'config';
@@ -101,5 +103,23 @@ export const createComment = data => {
     } catch (error) {
       console.log("Create comment action failed.")
     }
+  }
+}
+
+export const searchMovieIndexed = data => {
+  return async dispatch => {
+    try {
+      const res = await axios.post(`${MOVIES_URL}/search`, data);
+      dispatch({ type: SEARCH_MOVIE_INDEXED, payload: res.data });
+      return res.data;
+    } catch (error) {
+      console.log("Search failed")
+    }
+  }
+}
+
+export const clearMovieIndexed = data => {
+  return async dispatch => {
+    dispatch({ type: CLEAR_MOVIE_INDEXED })
   }
 }

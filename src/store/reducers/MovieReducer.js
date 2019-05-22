@@ -5,12 +5,15 @@ import {
   GET_SIMILAR,
   CREATE_COMMENT,
   REMOVE_ACTIVE,
-  CREATE_MOVIE
+  CREATE_MOVIE,
+  SEARCH_MOVIE_INDEXED,
+  CLEAR_MOVIE_INDEXED
 } from 'store/types';
 
 const initialState = {
   all: [],
   similar: [],
+  search: [],
   active: null
 }
 
@@ -32,6 +35,18 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         all: [action.payload, ...state.all]
+      }
+
+    case SEARCH_MOVIE_INDEXED:
+      return {
+        ...state,
+        search: action.payload
+      }
+
+    case CLEAR_MOVIE_INDEXED:
+      return {
+        ...state,
+        search: []
       }
 
     case CREATE_COMMENT:

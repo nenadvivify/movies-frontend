@@ -2,10 +2,26 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logOut } from 'store/actions/AuthActions';
+import { searchMovieIndexed, clearMovieIndexed } from 'store/actions/MovieActions';
 import { toast } from 'react-toastify';
+import { debounce } from 'lodash';
+
+import Search from 'component/SearchNav';
+import Dropdown from 'component/SearchNav/dropdown';
+
 import './style.scss';
 
 class Navbar extends Component {
+  state = {
+    searchText: ""
+  }
+
+  componentDidMount = () => {
+    this.debouncedSearch = debounce((search) => {
+      this.props.searchMovieIndexed({ search });
+    }, 750)
+  }
+
   handleLogout = () => {
     this.props.logOut().then(res => {
       window.location.replace('/login');
@@ -14,10 +30,39 @@ class Navbar extends Component {
     })
   }
 
+  handleChange = event => {
+    this.setState({ searchText: event.target.value }, () => {
+      const search = this.state.searchText.trim();
+
+      if(!search) {
+        this.props.clearMovieIndexed()
+      }
+
+      if(search) {
+        this.debouncedSearch(search)
+      }
+    });
+  }
+
+  handleClick = () => {
+    this.setState({ searchText: "" })
+  }
+
   userLinks = () => {
     const href = "#";
 
     return <Fragment>
+      <li className="nav-item nav-search">
+        <Search 
+        handleChange={this.handleChange}
+        searchText={this.state.searchText}/>
+
+        <Dropdown 
+        handleClick={this.handleClick}
+        close={!this.state.searchText}
+        movies={this.props.result} />
+      </li>
+
       <li className="nav-item">
         <Link className="nav-link" to="/home">Home</Link>
       </li>
@@ -77,8 +122,17 @@ class Navbar extends Component {
   }
 }
 
-const mapStateToProps = null
-const mapDispatchToProps = { logOut };
+const mapStateToProps = state => {
+  return {
+    result: state.movies.search
+  }
+}
+
+const mapDispatchToProps = {
+  searchMovieIndexed,
+  clearMovieIndexed,
+  logOut
+};
 
 export default connect(
   mapStateToProps,
